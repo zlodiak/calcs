@@ -1,0 +1,62 @@
+.wrap{
+
+}
+
+	.header{
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 1em;
+	}
+
+		.title{
+			width: calc(100% - 50px);
+			font-weight: bold;
+			font-size: 1.6rem;
+			cursor: pointer;
+		}
+
+		.close{
+
+		}
+
+	.lines{
+		padding-bottom: 1em;
+	}
+
+		.line{
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			align-items: center;
+		}
+
+			.labels{
+				display: flex;
+				flex-wrap: nowrap;
+				justify-content: flex-start;
+				align-items: center;
+				width: 50%;
+			}
+
+				.icon{
+					display: block;
+					margin-right: 10px;
+				}
+
+				.label{
+
+				}
+
+			.fields{
+				width: 50%;
+			}
+
+	.submit-area{
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+	}
+

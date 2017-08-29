@@ -1,0 +1,14 @@
+.btn-money-conv{
+	display: block;
+	height: 100%;
+	font-size: 20px;
+}
+
+	.icon-money-conv{
+		display: inline-block;
+		height: 100%;
+		font-size: 20px;
+		margin-top: -4px;
+	}
+
+
