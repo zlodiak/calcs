@@ -67,7 +67,7 @@
 	</div>	
 
 	<div class="submit-area">
-		<button class="btn calc-btn" md-button>
+		<button class="btn calc-btn" md-button [disabled]="isDisabledCalcBtn()" (click)="handlerClickCalcBtn()">
 			<i class="material-icons md-24">refresh</i>
 			<span>Пересчитать</span>
 		</button>

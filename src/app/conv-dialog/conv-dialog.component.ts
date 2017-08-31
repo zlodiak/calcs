@@ -15,8 +15,8 @@ export class ConvDialogComponent implements OnInit {
 	private targetRates: Object = {};
 	private fieldsValues: Object = {
 		rur: '',
-		usd: '1',
-		eur: '2',
+		usd: '',
+		eur: '',
 		gbp: '',
 		chf: ''
 	};
@@ -56,5 +56,21 @@ export class ConvDialogComponent implements OnInit {
                     console.log('err')         
                   });    
   };  
+
+  private handlerClickCalcBtn(): void {
+  	console.log(123, this.fieldsValues);
+  };
+
+  private isDisabledCalcBtn(): boolean {
+  	let result = false;
+  	
+  	if(	this.fieldsValues['rur'] == '' && 
+  			this.fieldsValues['usd'] == '' && 
+  			this.fieldsValues['eur'] == '' && 
+  			this.fieldsValues['gbp'] == '' && 
+  			this.fieldsValues['chf'] == '') {	result = true; }
+
+  	return result;
+  };
 
 }

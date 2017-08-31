@@ -60,3 +60,11 @@
 		align-items: center;
 	}
 
+		.calc-btn[disabled]{
+			background: #ccc;
+		}
+
+		.calc-btn{
+
+		}
+
