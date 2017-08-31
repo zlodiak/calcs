@@ -13,6 +13,13 @@ export class ConvDialogComponent implements OnInit {
 
 	private rate: Object = {};
 	private targetRates: Object = {};
+	private fieldsValues: Object = {
+		rur: '',
+		usd: '1',
+		eur: '2',
+		gbp: '',
+		chf: ''
+	};
 
   constructor(private rateService: RateService) { }
 
@@ -20,21 +27,29 @@ export class ConvDialogComponent implements OnInit {
   	this.getRate();
   }  
 
+  private handlerClickField(valuteName): void {
+  	console.log(valuteName);
+
+		for(var prop in this.fieldsValues) {
+		  if (prop == valuteName) continue;
+		  this.fieldsValues[prop] = '';
+		};
+  };
+
   private getRate(): void {
     this.rateService
         .getRate()
         .subscribe(data => {        						
         						this.rate = JSON.parse(data._body);
-                    console.log(typeof data._body, data._body);
-                    console.log(typeof this.rate, this.rate);
-                    //console.log(this.rate.Date);
-                    //this.targetRates = this.rate.Valute.USD.Value;
+                    console.log(typeof this.rate, this.rate);                    
+                    this.targetRates = {
+                    	usd: this.rate['Valute']['USD']['Value'],
+                    	eur: this.rate['Valute']['EUR']['Value'],
+                    	gbp: this.rate['Valute']['GBP']['Value'],
+                    	chf: this.rate['Valute']['CHF']['Value']
+                    };
 
-										/*for(var prop in this.rate) {
-										  if (!this.rate.hasOwnProperty(prop)) continue;
-										  console.log(prop, this.rate[prop]);
-										}*/
-
+                    console.log(this.targetRates);
 
                   }, 
                   err => {
