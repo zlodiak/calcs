@@ -28,8 +28,6 @@ export class ConvDialogComponent implements OnInit {
   }  
 
   private handlerClickField(valuteName): void {
-  	console.log(valuteName);
-
 		for(var prop in this.fieldsValues) {
 		  if (prop == valuteName) continue;
 		  this.fieldsValues[prop] = '';
@@ -58,8 +56,30 @@ export class ConvDialogComponent implements OnInit {
   };  
 
   private handlerClickCalcBtn(): void {
-  	console.log(123, this.fieldsValues);
+  	if(this.fieldsValues['rur'] != '') { 		
+ 			this.calcValutesFromRur();
+  	} else {
+  		if(this.fieldsValues['usd'] != '') {
+	  		this.fieldsValues['rur'] = (this.fieldsValues['usd'] * this.targetRates['usd']).toFixed(2);			
+  		} else if(this.fieldsValues['eur'] != '') {
+  			this.fieldsValues['rur'] = (this.fieldsValues['eur'] * this.targetRates['eur']).toFixed(2);
+  		} else if(this.fieldsValues['eur'] != '') {
+  			this.fieldsValues['rur'] = (this.fieldsValues['eur'] * this.targetRates['eur']).toFixed(2);
+  		} else if(this.fieldsValues['gbp'] != '') {
+  			this.fieldsValues['rur'] = (this.fieldsValues['gbp'] * this.targetRates['gbp']).toFixed(2);
+  		} else if(this.fieldsValues['chf'] != '') {
+  			this.fieldsValues['rur'] = (this.fieldsValues['chf'] * this.targetRates['chf']).toFixed(2);
+  		}
+  		this.calcValutesFromRur();
+  	}
   };
+
+  private calcValutesFromRur(): void {
+		for(var prop in this.targetRates) {
+		  if (prop == 'rus') continue;
+		  this.fieldsValues[prop] = (this.fieldsValues['rur'] / this.targetRates[prop]).toFixed(2);
+		};   	
+  };  
 
   private isDisabledCalcBtn(): boolean {
   	let result = false;
