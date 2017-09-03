@@ -44,3 +44,12 @@
   background: blue;
   color: #fff !important;
 }
+
+
+
+
+body,
+html{
+  padding: 0;
+  margin: 0;
+}

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Response } from '@angular/http';
 
+import { MdDialog, MdDialogRef } from '@angular/material';
+
 import { RateService } from '../services/rate.service';
+import { OkDialogComponent } from '../ok-dialog/ok-dialog.component';
 
 
 @Component({
@@ -21,7 +24,7 @@ export class ConvDialogComponent implements OnInit {
 		chf: ''
 	};
 
-  constructor(private rateService: RateService) { }
+  constructor(private rateService: RateService, public dialog: MdDialog, public dialogRef: MdDialogRef<ConvDialogComponent>) { }
 
   ngOnInit() {
   	this.getRate();
@@ -56,6 +59,18 @@ export class ConvDialogComponent implements OnInit {
   };  
 
   private handlerClickCalcBtn(): void {
+    if( isNaN(this.fieldsValues['rur']) == true ||
+        isNaN(this.fieldsValues['usd']) == true ||
+        isNaN(this.fieldsValues['eur']) == true ||
+        isNaN(this.fieldsValues['gbp']) == true ||
+        isNaN(this.fieldsValues['chf']) == true) { 
+                                                    let dialogRef = this.dialog.open(OkDialogComponent);
+                                                    setTimeout(function() {
+                                                      dialogRef.close();
+                                                    }, 2000);                                           
+                                                    return; 
+    }
+
   	if(this.fieldsValues['rur'] != '') { 		
  			this.calcValutesFromRur();
   	} else {

@@ -12,11 +12,13 @@ import { AppComponent } from './app.component';
 import { ConvDialogComponent } from './conv-dialog/conv-dialog.component';
 
 import { RateService } from './services/rate.service';
+import { OkDialogComponent } from './ok-dialog/ok-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConvDialogComponent
+    ConvDialogComponent,
+    OkDialogComponent
   ],
   imports: [
     FormsModule,
@@ -31,6 +33,9 @@ import { RateService } from './services/rate.service';
     RateService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ConvDialogComponent]
+  entryComponents: [
+    ConvDialogComponent, 
+    OkDialogComponent
+  ]
 })
 export class AppModule { }

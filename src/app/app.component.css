@@ -1,14 +1,25 @@
-.btn-money-conv{
-	display: block;
-	height: 100%;
-	font-size: 20px;
-}
+.wrap{
+	height: 100vh;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	padding: 0;	
 
-	.icon-money-conv{
-		display: inline-block;
+	.btn-money-conv{
+		display: block;
 		height: 100%;
 		font-size: 20px;
-		margin-top: -4px;
 	}
+
+		.icon-money-conv{
+			display: inline-block;
+			height: 100%;
+			font-size: 20px;
+			margin-top: -4px;
+		}
+
+}
+
 
 
