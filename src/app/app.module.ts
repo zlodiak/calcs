@@ -6,13 +6,17 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {  MdButtonModule, 
           MdDialogModule,
-          MdInputModule } from '@angular/material';
+          MdInputModule,
+          MdProgressSpinnerModule,
+          MdCardModule,
+          MdRadioModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ConvDialogComponent } from './conv-dialog/conv-dialog.component';
-
 import { RateService } from './services/rate.service';
 import { OkDialogComponent } from './ok-dialog/ok-dialog.component';
+
+import { GlobalVarsService } from './services/global-vars.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +25,9 @@ import { OkDialogComponent } from './ok-dialog/ok-dialog.component';
     OkDialogComponent
   ],
   imports: [
+    MdRadioModule,
+    MdCardModule,
+    MdProgressSpinnerModule,
     FormsModule,
     HttpModule,
     MdInputModule,
@@ -30,6 +37,7 @@ import { OkDialogComponent } from './ok-dialog/ok-dialog.component';
     BrowserModule
   ],
   providers: [
+    GlobalVarsService,
     RateService
   ],
   bootstrap: [AppComponent],

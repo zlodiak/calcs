@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Response } from '@angular/http';
 
 import { MdDialog, MdDialogRef } from '@angular/material';
 
 import { RateService } from '../services/rate.service';
 import { OkDialogComponent } from '../ok-dialog/ok-dialog.component';
+
+import { GlobalVarsService } from '../services/global-vars.service';
 
 
 @Component({
@@ -14,6 +16,7 @@ import { OkDialogComponent } from '../ok-dialog/ok-dialog.component';
 })
 export class ConvDialogComponent implements OnInit {
 
+  private accuracy: number;
 	private rate: Object = {};
 	private targetRates: Object = {};
 	private fieldsValues: Object = {
@@ -24,7 +27,12 @@ export class ConvDialogComponent implements OnInit {
 		chf: ''
 	};
 
-  constructor(private rateService: RateService, public dialog: MdDialog, public dialogRef: MdDialogRef<ConvDialogComponent>) { }
+  @Output() onChangeVisibilitySpinner = new EventEmitter<boolean>();
+
+  constructor(private rateService: RateService, 
+              public dialog: MdDialog, 
+              public dialogRef: MdDialogRef<ConvDialogComponent>,
+              public globalVarsService: GlobalVarsService) { this.accuracy = this.globalVarsService.getVar('accuracy') };
 
   ngOnInit() {
   	this.getRate();
@@ -75,24 +83,30 @@ export class ConvDialogComponent implements OnInit {
  			this.calcValutesFromRur();
   	} else {
   		if(this.fieldsValues['usd'] != '') {
-	  		this.fieldsValues['rur'] = (this.fieldsValues['usd'] * this.targetRates['usd']).toFixed(2);			
+	  		this.fieldsValues['rur'] = (this.fieldsValues['usd'] * this.targetRates['usd']).toFixed(this.accuracy);			
   		} else if(this.fieldsValues['eur'] != '') {
-  			this.fieldsValues['rur'] = (this.fieldsValues['eur'] * this.targetRates['eur']).toFixed(2);
+  			this.fieldsValues['rur'] = (this.fieldsValues['eur'] * this.targetRates['eur']).toFixed(this.accuracy);
   		} else if(this.fieldsValues['eur'] != '') {
-  			this.fieldsValues['rur'] = (this.fieldsValues['eur'] * this.targetRates['eur']).toFixed(2);
+  			this.fieldsValues['rur'] = (this.fieldsValues['eur'] * this.targetRates['eur']).toFixed(this.accuracy);
   		} else if(this.fieldsValues['gbp'] != '') {
-  			this.fieldsValues['rur'] = (this.fieldsValues['gbp'] * this.targetRates['gbp']).toFixed(2);
+  			this.fieldsValues['rur'] = (this.fieldsValues['gbp'] * this.targetRates['gbp']).toFixed(this.accuracy);
   		} else if(this.fieldsValues['chf'] != '') {
-  			this.fieldsValues['rur'] = (this.fieldsValues['chf'] * this.targetRates['chf']).toFixed(2);
+  			this.fieldsValues['rur'] = (this.fieldsValues['chf'] * this.targetRates['chf']).toFixed(this.accuracy);
   		}
   		this.calcValutesFromRur();
   	}
   };
 
   private calcValutesFromRur(): void {
+    this.onChangeVisibilitySpinner.emit(true);
+
+    setTimeout(function() {
+      //
+    }, 500);
+
 		for(var prop in this.targetRates) {
 		  if (prop == 'rus') continue;
-		  this.fieldsValues[prop] = (this.fieldsValues['rur'] / this.targetRates[prop]).toFixed(2);
+		  this.fieldsValues[prop] = (this.fieldsValues['rur'] / this.targetRates[prop]).toFixed(this.accuracy);
 		};   	
   };  
 

@@ -1,4 +1,18 @@
 <div class="wrap">
+	<md-progress-spinner class="spinner" mode="indeterminate" *ngIf="isVisibleSpinner" (onChangeVisibilitySpinner)="setVisibilitySpinner($event)"></md-progress-spinner>
+
+	<md-card class="settings-area">
+		<h2>Количество знаков после запятой</h2>
+
+		<md-radio-group class="settings-tofixed">
+		  <md-radio-button value="0" [checked]="accuracy == 0" (click)="changeAccuracy(0)">0</md-radio-button>
+		  <md-radio-button value="1" [checked]="accuracy == 1" (click)="changeAccuracy(1)">1</md-radio-button>
+		  <md-radio-button value="2" [checked]="accuracy == 2" (click)="changeAccuracy(2)">2</md-radio-button>
+		  <md-radio-button value="3" [checked]="accuracy == 3" (click)="changeAccuracy(3)">3</md-radio-button>
+		  <md-radio-button value="4" [checked]="accuracy == 4" (click)="changeAccuracy(4)">4</md-radio-button>
+		</md-radio-group>
+	</md-card>
+
 	<button md-button class="btn btn-money-conv" (click)="openMoneyConverter()">
 	  <i class="material-icons md-24 icon-money-conv">attach_money</i>
 	  Открыть конвертер валют

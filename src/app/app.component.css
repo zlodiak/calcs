@@ -1,15 +1,32 @@
 .wrap{
 	height: 100vh;
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;
+  flex-direction: column;
 	padding: 0;	
+	position: relative;
+}
+
+	.settings-area{
+		width: 100% ;
+		max-width: 300px;
+		margin-bottom: 20px;
+	}
+
+		.settings-tofixed{
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: space-between;
+			align-items: center;
+		}
 
 	.btn-money-conv{
 		display: block;
-		height: 100%;
 		font-size: 20px;
+		width: 100%;
+		max-width: 300px;		
 	}
 
 		.icon-money-conv{
@@ -19,7 +36,9 @@
 			margin-top: -4px;
 		}
 
-}
+
+
+
 
 
 
