@@ -16,6 +16,7 @@ import { GlobalVarsService } from '../services/global-vars.service';
 })
 export class ConvDialogComponent implements OnInit {
 
+  private isVisibleFlags: boolean;
   private accuracy: number;
 	private rate: Object = {};
 	private targetRates: Object = {};
@@ -32,7 +33,10 @@ export class ConvDialogComponent implements OnInit {
   constructor(private rateService: RateService, 
               public dialog: MdDialog, 
               public dialogRef: MdDialogRef<ConvDialogComponent>,
-              public globalVarsService: GlobalVarsService) { this.accuracy = this.globalVarsService.getVar('accuracy') };
+              public globalVarsService: GlobalVarsService) { 
+    this.accuracy = this.globalVarsService.getVar('accuracy'); 
+    this.isVisibleFlags = this.globalVarsService.getVar('isVisibleFlags'); 
+  };
 
   ngOnInit() {
   	this.getRate();

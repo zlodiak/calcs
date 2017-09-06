@@ -15,17 +15,13 @@ import { GlobalVarsService } from './services/global-vars.service';
 })
 export class AppComponent {
 
-	private isVisibleSpinner = false;
+	private isVisibleFlags: boolean;
 	private accuracy: number;
 
   constructor(public dialog: MdDialog, public globalVarsService: GlobalVarsService) {
   	this.accuracy = globalVarsService.getVar('accuracy');
-  	console.log(this.accuracy);
+  	this.isVisibleFlags = globalVarsService.getVar('isVisibleFlags');
   };
-  
-	private setVisibilitySpinner(visibility): void {
-		this.isVisibleSpinner = visibility;
-	};
 
 	private openMoneyConverter(): void {
 		this.dialog.open(ConvDialogComponent);
@@ -34,6 +30,14 @@ export class AppComponent {
 	private changeAccuracy(val): void {
 		this.globalVarsService.setVar('accuracy', val);
 		this.accuracy = this.globalVarsService.getVar('accuracy');
+	};
+
+	private changeVisibilityFlags(): void {
+		let this_ = this;
+		setTimeout(function() {
+			this_.globalVarsService.setVar('isVisibleFlags', this_.isVisibleFlags);
+		}, 100);
+		
 	};
 
 }

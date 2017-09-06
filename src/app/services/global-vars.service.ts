@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 
+
 @Injectable()
 export class GlobalVarsService {
 
 	private vars: Object = {
-		'accuracy': 2,
-		'showFlags': true
+		'isVisibleFlags': true,
+		'accuracy': 2
 	};
 
-  constructor() { }
+  constructor() {};
 
  	getVar(key): any {
  		return this.vars[key];
  	};
 
  	setVar(key, val): void {
+ 		//console.log(key, val);
  		this.vars[key] = val;
  	}; 	
 

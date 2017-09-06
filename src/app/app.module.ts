@@ -9,7 +9,8 @@ import {  MdButtonModule,
           MdInputModule,
           MdProgressSpinnerModule,
           MdCardModule,
-          MdRadioModule } from '@angular/material';
+          MdRadioModule,
+          MdSlideToggleModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ConvDialogComponent } from './conv-dialog/conv-dialog.component';
@@ -25,6 +26,7 @@ import { GlobalVarsService } from './services/global-vars.service';
     OkDialogComponent
   ],
   imports: [
+    MdSlideToggleModule,
     MdRadioModule,
     MdCardModule,
     MdProgressSpinnerModule,

@@ -4,11 +4,17 @@
 	<md-card class="settings-area">
 		<h2>Количество знаков после запятой</h2>
 
-		<md-radio-group class="settings-tofixed">
+		<md-radio-group class="settings-accuracy">
 		  <md-radio-button value="{{ num }}" [checked]="accuracy == num" (click)="changeAccuracy(num)" *ngFor = "let num of [1, 2, 3, 4, 5]">
 		  	{{ num }}
 			</md-radio-button>
 		</md-radio-group>
+
+		<h2>Показывать флаги стран?</h2>
+
+    <md-slide-toggle class="toggler-flags-visibility" [checked]="isVisibleFlags" [(ngModel)]="isVisibleFlags" (click)="changeVisibilityFlags()">
+    	Показывать флаги стран?
+    </md-slide-toggle>		
 	</md-card>
 
 	<button md-button class="btn btn-money-conv" (click)="openMoneyConverter()">
