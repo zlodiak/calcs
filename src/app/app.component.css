@@ -37,6 +37,22 @@
 		}
 
 
+.footer{
+	width: 100%;
+	position: fixed;
+	bottom: 30px;
+	left: 0;
+	right: 0;
+	background: #ccc;
+	padding: 30px 0;
+
+}
+	.creator{
+		width: 100%;
+		text-align: center;
+
+	}
+
 
 
 

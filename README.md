@@ -1,3 +1,9 @@
+test currency converter on angular2
+
+use RBK exchange rates.
+
+live page: http://fh79272k.bget.ru/files/projects/calcs/
+
 # Calcs
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.6.
